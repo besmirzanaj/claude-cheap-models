@@ -17,7 +17,7 @@ Claude sends to the tool.
 Needs [Claude Code](https://claude.com/claude-code) and [uv](https://docs.astral.sh/uv/).
 
 ```bash
-git clone git@github.com:besmirzanaj/claude-cheap-models.git
+git clone https://github.com/besmirzanaj/claude-cheap-models.git
 cd claude-cheap-models && ./install.sh
 ```
 
