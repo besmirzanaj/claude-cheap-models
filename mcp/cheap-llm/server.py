@@ -16,7 +16,7 @@ import httpx
 from mcp.server.mcpserver import MCPServer
 
 MODEL = os.getenv("CHEAP_LLM_MODEL", "deepseek/deepseek-v4-flash")
-URL = os.getenv("CHEAP_LLM_URL", "https://openrouter.ai/api/v1/chat/completions")
+URL = "https://openrouter.ai/api/v1/chat/completions"
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 server = MCPServer("cheap-llm")

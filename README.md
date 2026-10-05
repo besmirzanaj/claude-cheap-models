@@ -34,18 +34,3 @@ secret-tool store --label='OpenRouter API key' service openrouter-api-key
 Set `CHEAP_LLM_MODEL` to use a different OpenRouter model.
 
 Re-run `./install.sh` after pulling to update.
-
-## Tests
-
-```bash
-uv run --with pytest --with "mcp>=2,<3" pytest -q tests
-```
-
-The end-to-end tests run the real `install.sh` into a throwaway config
-directory (with a stub `claude`), then start the installed server over stdio
-and call `cheap_llm` against a local stand-in for OpenRouter. They check the
-installer is idempotent and what the tool sends: the model, reasoning off, the
-no-retention provider rule, and that nothing is sent without a key. CI runs
-them on Linux and macOS.
-
-Set `OPENROUTER_LIVE_KEY` to also run one real call to OpenRouter.
