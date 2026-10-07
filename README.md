@@ -33,4 +33,13 @@ secret-tool store --label='OpenRouter API key' service openrouter-api-key
 `OPENROUTER_API_KEY` in the environment also works and takes precedence.
 Set `CHEAP_LLM_MODEL` to use a different OpenRouter model.
 
+### Optional file access
+
+Off by default. Set `CHEAP_LLM_ROOT=/path/to/repo` in the MCP server's environment and
+the tool accepts `paths` (relative to that root) whose contents are appended to the
+prompt. Paths outside the root (including via symlinks), secret-looking names (`.env`,
+`*.pem`, `*.key`, `*secret*`, `.git`, `.ssh`, ...) and non-UTF-8 files are refused;
+total size is capped by `CHEAP_LLM_MAX_BYTES` (default 200000). Attached files go to
+OpenRouter, so enable it only for repos you are willing to send to a third party.
+
 Re-run `./install.sh` after pulling to update.
