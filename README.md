@@ -42,12 +42,16 @@ prompt. Paths outside the root (including via symlinks), secret-looking names (`
 total size is capped by `CHEAP_LLM_MAX_BYTES` (default 200000). Attached files go to
 OpenRouter, so enable it only for repos you are willing to send to a third party.
 
-You can also register the MCP server manually:
+`./install.sh` already registers the server, so `claude mcp add` would fail with
+"already exists". To enable file access, replace the registration:
 
 ```bash
-claude mcp add --scope user cheap-llm \
-  -e CHEAP_LLM_ROOT=/path/to/repo \
+claude mcp remove cheap-llm --scope user
+claude mcp add --scope user -e CHEAP_LLM_ROOT=/path/to/repo cheap-llm \
   -- uv run --quiet --script ~/.claude/mcp/cheap-llm/server.py
 ```
+
+Restart Claude Code afterwards. `CHEAP_LLM_ROOT` must be a single repo; to reset, run the
+same two commands without `-e`.
 
 Re-run `./install.sh` after pulling to update.
